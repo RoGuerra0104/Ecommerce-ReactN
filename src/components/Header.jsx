@@ -6,12 +6,17 @@ import { fontSize } from '../global/fontSize';
 const Header = ({ title, navigation }) => {
     return (
         <View style={styles.headerContainer}>
-            <TouchableOpacity onPress={navigation.goBack} style={styles.backArrow}>
-                <Ionicons name="arrow-back-circle-outline" size={50} color="white" />
-            </TouchableOpacity>
+            {
+                navigation.canGoBack() ?
+                    <TouchableOpacity onPress={navigation.goBack} style={styles.backArrow}>
+                        <Ionicons name="arrow-back-circle-outline" size={40} color="white" />
+                    </TouchableOpacity>
+                    : null
+            }
             <Text style={styles.headerTitle}>{title}</Text>
+            
             <TouchableOpacity onPress={navigation.popToTop} style={styles.homeImport}>
-            <MaterialCommunityIcons name="home-import-outline" size={50} color="white" />
+                <MaterialCommunityIcons name="home-import-outline" size={40} color="white" />
             </TouchableOpacity>
         </View>
     )
@@ -26,19 +31,19 @@ const styles = StyleSheet.create({
         justifyContent: 'space-around',
         alignItems: 'center',
         backgroundColor: colors.primary,
-        paddingTop:15
+        paddingTop: 15
     },
     headerTitle: {
         color: '#fff',
         fontFamily: "Karla-Bold",
         fontSize: fontSize.header,
-        
+
     },
-    backArrow:{
-        paddingTop:10
+    backArrow: {
+        paddingTop: 10
     },
-    homeImport:{
-        paddingHorizontal:10,
-        flexDirection:"row-reverse"
+    homeImport: {
+        paddingHorizontal: 10,
+        flexDirection: "row-reverse"
     }
 })

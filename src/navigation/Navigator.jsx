@@ -14,8 +14,12 @@ const Navigator =()=>{
 return(
     <NavigationContainer>
         <Stack.Navigator
-            
-        
+            initialRouteName="Categorías"
+            screenOptions={
+                ({navigation, route}) =>({
+                    header: ()=> <Header title={route.name} navigation={navigation} />
+                })
+            }                   
         >
             <Stack.Screen
                 name="Categorias"
