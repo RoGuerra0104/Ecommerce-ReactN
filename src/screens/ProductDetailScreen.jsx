@@ -1,15 +1,17 @@
 import { View, Text, StyleSheet, ActivityIndicator, Image, TouchableOpacity, useWindowDimensions, ScrollView } from 'react-native'
 import products_data from '../data/products_data.json'
 import { useEffect, useState } from 'react'
-import Header from '../components/Header'
 import { colors } from '../global/colors'
+import { fontSize } from '../global/fontSize'
 
-const ProductDetailScreen = ({ productId }) => {
+const ProductDetailScreen = ({ route }) => {
     const [productSelected, setProductSelected] = useState({})
     const [isLoading, setIsLoading] = useState(true)
     const [isPortrait, setIsPortrait] = useState(true)
 
     const { height, width } = useWindowDimensions()
+
+    const productId = route.params
 
     useEffect(() => {
         height < width ? setIsPortrait(false) : setIsPortrait(true)
@@ -31,7 +33,7 @@ const ProductDetailScreen = ({ productId }) => {
                     <ActivityIndicator />
                     :
                     <>
-                        <Header title="Detalle del producto" />
+                        
                         <ScrollView >
                             <Image
                                 source={{ uri: productSelected.images[0] }}
@@ -42,7 +44,7 @@ const ProductDetailScreen = ({ productId }) => {
                                 <Text style={styles.title}>{productSelected.title}</Text>
                                 <Text style={styles.description}>{productSelected.description}</Text>
                                 <Text style={styles.price}>$ {productSelected.price}</Text>
-                                <TouchableOpacity onPress={() => null}>
+                                <TouchableOpacity style={isPortrait ? styles.buyButton : styles.buyAlt} onPress={() => null}>
                                     <Text style={styles.buyText}>Comprar</Text>
                                 </TouchableOpacity>
                             </View>
@@ -72,15 +74,15 @@ const styles = StyleSheet.create({
     },
     title: {
         fontFamily: 'Karla-Bold',
-        fontSize: 32,
+        fontSize: fontSize.header,
     },
     description: {
         fontFamily: 'Karla-regular',
-        fontSize: 20,
+        fontSize: fontSize.text,
     },
     price: {
         fontFamily: 'Karla-Bold',
-        fontSize: 32,
+        fontSize: fontSize.header,
         color: colors.secondary
     },
     buyButton: {
@@ -92,12 +94,8 @@ const styles = StyleSheet.create({
         borderRadius: 10,
     },
     buyText: {
-        color: '#000',
-        borderRadius: 10,
-        backgroundColor:"green",
-        padding:6,
-        fontSize:30,
-        marginTop:15
+        color: '#fff',
+        fontSize:fontSize.text
     },
     buyAlt: {
         marginTop: 10,

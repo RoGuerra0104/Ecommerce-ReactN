@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { StyleSheet, TextInput, TouchableOpacity, View, Text } from 'react-native'
 import { EvilIcons, Entypo } from '@expo/vector-icons';
+import { fontSize } from '../global/fontSize';
 
 
 const Search = ({ onSearchHandlerEvent }) => {
@@ -65,7 +66,7 @@ const styles = StyleSheet.create({
   },
   textInput: {
     width: '80%',
-    fontSize: 20
+    fontSize: fontSize.text
   },
 
 })

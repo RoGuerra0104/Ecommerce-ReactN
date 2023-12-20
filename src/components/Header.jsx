@@ -1,11 +1,18 @@
-import { View, Text, StyleSheet, Pressable } from 'react-native'
+import { View, Text, StyleSheet, TouchableOpacity } from 'react-native'
 import { colors } from '../global/colors'
+import { Ionicons, MaterialCommunityIcons } from '@expo/vector-icons';
+import { fontSize } from '../global/fontSize';
 
-const Header = ({ title }) => {
+const Header = ({ title, navigation }) => {
     return (
         <View style={styles.headerContainer}>
+            <TouchableOpacity onPress={navigation.goBack} style={styles.backArrow}>
+                <Ionicons name="arrow-back-circle-outline" size={50} color="white" />
+            </TouchableOpacity>
             <Text style={styles.headerTitle}>{title}</Text>
-            
+            <TouchableOpacity onPress={navigation.popToTop} style={styles.homeImport}>
+            <MaterialCommunityIcons name="home-import-outline" size={50} color="white" />
+            </TouchableOpacity>
         </View>
     )
 }
@@ -14,14 +21,24 @@ export default Header
 
 const styles = StyleSheet.create({
     headerContainer: {
+        flexDirection: "row",
         height: 100,
-        justifyContent: 'center',
+        justifyContent: 'space-around',
         alignItems: 'center',
         backgroundColor: colors.primary,
+        paddingTop:15
     },
     headerTitle: {
         color: '#fff',
-        fontFamily:"Karla-Bold",
-        fontSize:30
+        fontFamily: "Karla-Bold",
+        fontSize: fontSize.header,
+        
+    },
+    backArrow:{
+        paddingTop:10
+    },
+    homeImport:{
+        paddingHorizontal:10,
+        flexDirection:"row-reverse"
     }
 })

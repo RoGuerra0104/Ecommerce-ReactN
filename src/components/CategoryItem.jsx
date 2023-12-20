@@ -1,9 +1,10 @@
-import { Text, StyleSheet, TouchableOpacity, View } from "react-native"
+import { Text, StyleSheet, TouchableOpacity } from "react-native"
 import Card from './Card'
+import { fontSize } from "../global/fontSize"
 
-const CategoryItem = ({ category, onSelectCategoryEvent }) => {
+const CategoryItem = ({ category, navigation }) => {
     return (
-        <TouchableOpacity onPress={()=>onSelectCategoryEvent(category)}>
+        <TouchableOpacity onPress={() => navigation.navigate("Productos", { category })}>
             <Card style={styles.cardContainer}>
                 <Text style={styles.text}>{category}</Text>
             </Card>
@@ -18,11 +19,9 @@ const styles = StyleSheet.create({
         backgroundColor: "#fff",
         padding: 20,
         margin: 10,
-        
-        
     },
     text: {
         textTransform: 'capitalize',
-        fontSize: 20
+        fontSize: fontSize.text
     }
 })
