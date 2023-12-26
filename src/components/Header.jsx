@@ -31,7 +31,7 @@ const styles = StyleSheet.create({
         justifyContent: 'space-around',
         alignItems: 'center',
         backgroundColor: colors.primary,
-        paddingTop: 15
+        paddingTop: 15,
     },
     headerTitle: {
         color: '#fff',

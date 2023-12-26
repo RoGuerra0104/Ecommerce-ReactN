@@ -1,4 +1,4 @@
-import {View, Text, StyleSheet, FlatList} from 'react-native'
+import { StyleSheet, FlatList} from 'react-native'
 import categories_data from '../data/categories_data.json'
 import CategoryItem from '../components/CategoryItem'
 
@@ -10,7 +10,7 @@ const CategoriesScreen = ({navigation}) => {
 
     return(
         <>
-        <FlatList
+        <FlatList style={style.category}
             data={categories_data}
             renderItem={renderCategoryItem}
             keyExtractor={item=>item}
@@ -21,3 +21,8 @@ const CategoriesScreen = ({navigation}) => {
 
 export default CategoriesScreen
 
+const style = StyleSheet.create({
+    category:{
+        marginBottom:90
+    }
+})
