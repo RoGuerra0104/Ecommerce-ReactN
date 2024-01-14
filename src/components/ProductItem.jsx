@@ -2,7 +2,7 @@ import { StyleSheet, Text, TouchableOpacity, View, Image } from 'react-native'
 import { fontSize } from '../global/fontSize'
 import Card from './Card'
 import { useDispatch } from 'react-redux'
-import { setProductIdSelected } from '../features/shops-slices'
+import { setProductIdSelected } from '../features/shopSlices'
 
 
 
@@ -40,6 +40,7 @@ const styles = StyleSheet.create({
         backgroundColor: "#fff",
         padding: 10,
         margin: 10,
+        borderRadius: 30
     },
     conatinerProductItem: {
 

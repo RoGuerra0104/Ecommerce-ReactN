@@ -2,7 +2,7 @@ import { Text, StyleSheet, TouchableOpacity } from "react-native"
 import Card from './Card'
 import { fontSize } from "../global/fontSize"
 import { useDispatch } from "react-redux"
-import { setCategorySelected } from "../features/shops-slices"
+import { setCategorySelected } from "../features/shopSlices"
 
 
 const CategoryItem = ({ category, navigation }) => {
@@ -27,8 +27,10 @@ export default CategoryItem
 const styles = StyleSheet.create({
     cardContainer: {
         backgroundColor: "#fff",
-        padding: 20,
+        padding:15,
+        paddingLeft:30,
         margin: 10,
+        borderRadius:30
     },
     text: {
         textTransform: 'capitalize',

@@ -3,6 +3,9 @@ import products_data from '../data/products_data.json'
 import { useEffect, useState } from 'react'
 import { colors } from '../global/colors'
 import { fontSize } from '../global/fontSize'
+import { addItem } from '../features/cartSlice'
+import { useDispatch } from 'react-redux'
+
 
 const ProductDetailScreen = ({ route }) => {
     const [productSelected, setProductSelected] = useState({})
@@ -25,12 +28,19 @@ const ProductDetailScreen = ({ route }) => {
     }
         , [productId])
 
+
+        const dispatch = useDispatch()
+
+        const onAddToCart=()=>{
+            dispatch(addItem({...productSelected,quantity:1 }))
+        }
+
     return (
         <>
             {
                 isLoading
                     ?
-                    <ActivityIndicator />
+                    <ActivityIndicator  />
                     :
                     <>
                         
@@ -44,8 +54,8 @@ const ProductDetailScreen = ({ route }) => {
                                 <Text style={styles.title}>{productSelected.title}</Text>
                                 <Text style={styles.description}>{productSelected.description}</Text>
                                 <Text style={styles.price}>$ {productSelected.price}</Text>
-                                <TouchableOpacity style={isPortrait ? styles.buyButton : styles.buyAlt} onPress={() => null}>
-                                    <Text style={styles.buyText}>Comprar</Text>
+                                <TouchableOpacity style={isPortrait ? styles.buyButton : styles.buyAlt} onPress={onAddToCart}>
+                                    <Text style={styles.buyText}>Agregar al Carrito</Text>
                                 </TouchableOpacity>
                             </View>
                         </ScrollView>
@@ -59,6 +69,7 @@ const ProductDetailScreen = ({ route }) => {
 export default ProductDetailScreen
 
 const styles = StyleSheet.create({
+    
     imageProduct: {
         minWidth: 300,
         width: '100%',
