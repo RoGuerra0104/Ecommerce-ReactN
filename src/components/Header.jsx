@@ -1,6 +1,6 @@
 import { View, Text, StyleSheet, TouchableOpacity } from 'react-native'
 import { colors } from '../global/colors'
-import { Ionicons, MaterialCommunityIcons } from '@expo/vector-icons';
+import { Ionicons, AntDesign } from '@expo/vector-icons';
 import { fontSize } from '../global/fontSize';
 
 const Header = ({ title, navigation }) => {
@@ -15,9 +15,9 @@ const Header = ({ title, navigation }) => {
             }
             <Text style={styles.headerTitle}>{title}</Text>
             
-            <TouchableOpacity onPress={navigation.popToTop} style={styles.homeImport}>
-                <MaterialCommunityIcons name="home-import-outline" size={40} color="white" />
-            </TouchableOpacity>
+            {/* <TouchableOpacity onPress={()=>navigation.navigate("Perfil")} style={styles.homeImport}>
+            <AntDesign name="user" size={30} color={"white"} />
+            </TouchableOpacity> */}
         </View>
     )
 }

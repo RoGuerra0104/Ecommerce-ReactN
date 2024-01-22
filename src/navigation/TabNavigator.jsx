@@ -4,6 +4,7 @@ import { StyleSheet } from "react-native";
 import ShopNavigator from "./ShopNavigator";
 import CartNavigator from "./CartNavigator";
 import OrdersNavigator from "./OrdersNavigator";
+import ProfileNavigator from "./ProfileNavigator";
 import { colors } from "../global/colors";
 import { AntDesign, Feather } from '@expo/vector-icons';
 
@@ -45,6 +46,14 @@ const TabNavigator = () => {
                     options={{
                         tabBarIcon: ({ focused }) => (
                             <AntDesign name="profile" size={30} color={focused ? "black" : "white"} />)
+                    }}
+                />
+                <Tab.Screen
+                    name="ProfileStack"
+                    component={ProfileNavigator}
+                    options={{
+                        tabBarIcon: ({ focused }) => (
+                            <AntDesign name="user" size={30} color={focused ? "black" : "white"} />)
                     }}
                 />
             </Tab.Navigator>

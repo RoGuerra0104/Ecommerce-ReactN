@@ -5,9 +5,7 @@ import { colors } from '../global/colors'
 import { fontSize } from '../global/fontSize'
 import { addItem } from '../features/cartSlice'
 import { useDispatch } from 'react-redux'
-import * as React from 'react';
-import { Dimensions, Text, View } from 'react-native';
-import Carousel from 'react-native-reanimated-carousel';
+
 
 
 const ProductDetailScreen = ({ route }) => {
