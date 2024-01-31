@@ -75,11 +75,13 @@ const styles = StyleSheet.create({
         minWidth: 300,
         width: '100%',
         height: 400,
+        borderRadius: 60
 
     },
     imageProductLandscape: {
         width: 200,
         height: 200,
+        
     },
     detailContainer: {
         alignItems: 'center',

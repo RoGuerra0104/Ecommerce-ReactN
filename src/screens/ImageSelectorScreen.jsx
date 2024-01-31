@@ -32,7 +32,6 @@ const ImageSelectorScreen = ({ navigation }) => {
                 quality: 0.2
             })
             if (!result.canceled) {
-                //console.log(result)
                 setImage(`data:image/jpeg;base64,${result.assets[0].base64}`)
             }
         } else {

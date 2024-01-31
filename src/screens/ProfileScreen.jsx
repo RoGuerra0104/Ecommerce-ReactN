@@ -1,6 +1,5 @@
 import { StyleSheet, Text, View, Pressable, Image } from "react-native";
 import user_data from "../data/user_data.json"
-import { useState } from "react";
 import { useSelector } from "react-redux";
 
 const ProfileScreen = ({navigation}) => {

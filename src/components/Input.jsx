@@ -34,10 +34,10 @@ const styles = StyleSheet.create({
     },
     input:{
         borderWidth:1,
-        borderColor:colors.primary,
+        borderColor:colors.primaryBack,
         borderRadius: 10,
         width: '90%',
-        backgroundColor: colors.primary,
+        backgroundColor: colors.primaryBack,
         color: "#fff",
         padding: 8
     },

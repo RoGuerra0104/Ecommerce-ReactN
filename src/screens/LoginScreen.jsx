@@ -15,6 +15,7 @@ const LoginScreen = ({ navigation }) => {
 
     const onSubmit = () => {
         triggerLogIn({ email, password })
+        //triggerLogIn({ email: "prueba@coder.com", password: "123456" })
         console.log(result)
     }
     const dispatch = useDispatch()
@@ -27,12 +28,11 @@ const LoginScreen = ({ navigation }) => {
 
     return (
         <View style={styles.container}>
-            <Input 
+            <Input
                 label="Email:"
-                
                 onChange={setEmail}
             />
-            <Input 
+            <Input
                 label="Contraseña:"
                 onChange={setPassword}
                 isSecureEntry={true}
@@ -59,11 +59,9 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         flex: 1,
         gap: 10,
+        color: colors.secondary
     },
-    email: {
-        backgroundColor: colors.primaryBack,
-        margin:82
-    },
+
     btn: {
         padding: 10,
         backgroundColor: colors.primaryBack,
