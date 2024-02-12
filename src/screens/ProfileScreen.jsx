@@ -1,16 +1,30 @@
-import { StyleSheet, Text, View, Pressable, Image } from "react-native";
+import { StyleSheet, Text, View, Pressable, Image, TouchableOpacity } from "react-native";
 import user_data from "../data/user_data.json"
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { logout } from '../features/authSlice';
+import { deleteSession } from '../db';
+import { AntDesign } from '@expo/vector-icons';
 
-const ProfileScreen = ({navigation}) => {
+const ProfileScreen = ({ navigation }) => {
 
-    const image = useSelector(state=> state.authReducer.profilePicture)
+    const image = useSelector(state => state.authReducer.profilePicture)
 
+
+    const email = useSelector(state => state.authReducer.user)
+    const localId = useSelector(state => state.authReducer.localId)
+    const dispatch = useDispatch()
+
+    const onLogout = () => {
+        dispatch(logout())
+        const deletedSession = deleteSession()
+        
+    }
 
     return (
+        <>
         <View style={styles.container}>
             <View>
-                <Pressable onPress={()=>navigation.navigate("Seleccionar imagen")}
+                <Pressable onPress={() => navigation.navigate("Seleccionar imagen")}
                     style={({ pressed }) => [
                         {
                             backgroundColor: pressed ? '#DCDCDC' : '#E8E8E8',
@@ -21,7 +35,7 @@ const ProfileScreen = ({navigation}) => {
                         image
                             ?
                             <Image
-                                source={{uri:image}}
+                                source={{ uri: image }}
                                 style={styles.profilePicture}
                                 resizeMode='contain'
                             />
@@ -43,6 +57,12 @@ const ProfileScreen = ({navigation}) => {
                 <Text style={styles.userData}>{user_data.city}</Text>
             </View>
         </View>
+        {
+                email
+                &&
+                <TouchableOpacity onPress={onLogout} ><Text style={styles.logout}>Cerrar Sesion <AntDesign name="logout" size={18} color="black" /></Text></TouchableOpacity>
+            }
+        </>
     )
 }
 
@@ -73,5 +93,16 @@ const styles = StyleSheet.create({
     userData: {
         fontFamily: 'Karla-Bold',
         fontSize: 12
+    },
+    logout:{
+        justifyContent: "center",
+        backgroundColor: "#a51c30",
+        textAlign: "center",
+        fontSize:20,
+        borderRadius: 30,
+        padding:5,
+        marginLeft:80,
+        marginRight:80,
+        
     }
 })

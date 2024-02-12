@@ -1,17 +1,20 @@
-import { FlatList, Modal, StyleSheet, View, Text, Pressable } from 'react-native'
+import { FlatList, Modal, StyleSheet, View, Text, Pressable, Button } from 'react-native'
 import OrderItem from '../components/OrderItem'
-import { useGetOrdersQuery } from '../services/shopService'
-import { useState, useEffect } from 'react'
-import { useSelector } from 'react-redux'
+import { useGetOrdersQuery  } from '../services/shopService'
+import { useState, useEffect  } from 'react'
+import { useSelector,  } from 'react-redux'
+
+
 
 const OrdersScreen = () => {
     const localId = useSelector(state => state.authReducer.localId)
-    //console.log("LocalId en OrderScreen: ", localId)
+    
     const { data, isLoading, error } = useGetOrdersQuery(localId)
     const [orderData, setOrderData] = useState([])
     const [orderIdSelected, setOrderIdSelected] = useState("")
     const [orderSelected, setOrderSelected] = useState({})
     const [modalVisible, setModalVisible] = useState(false)
+    
 
     useEffect(() => {
         if (data) {
@@ -20,14 +23,15 @@ const OrdersScreen = () => {
         }
     }, [data, isLoading])
 
-    //console.log(orderData)
+
     useEffect(() => {
-        //console.log(orderIdSelected)
+
         const orderSelected = orderData.find(order => order.orderId === orderIdSelected)
         setOrderSelected(orderSelected)
     }, [orderIdSelected])
 
-    console.log(orderSelected)
+
+    
 
     const renderOrderItem = ({ item }) => {
         return (
@@ -44,13 +48,13 @@ const OrdersScreen = () => {
             <Modal visible={modalVisible}>
                 <View style={styles.centeredView}>
                     <View style={styles.modalView}>
-                        <Text style={styles.modalText}>Total: ${orderData?.title}</Text>
                         <Text style={styles.modalText}>Total: ${orderSelected?.total}</Text>
                         <Pressable
                             style={[styles.button, styles.buttonClose]}
                             onPress={() => setModalVisible(false)}>
                             <Text style={styles.textStyle}>Cerrar</Text>
                         </Pressable>
+                        
                     </View>
                 </View>
             </Modal>
@@ -101,6 +105,5 @@ const styles = StyleSheet.create({
     modalText: {
         marginBottom: 15,
         textAlign: 'center',
-        color: "black"
     },
 });

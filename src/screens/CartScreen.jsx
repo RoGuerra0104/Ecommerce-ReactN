@@ -14,7 +14,7 @@ const CartScreen = () => {
 
   const confirmCart = () => {
     const createdAt = Date.now()
-    triggerPost({ total, cartItem, localId:localId, createdAt:createdAt})
+    triggerPost({ total, cartItem, localId:localId, createdAt:createdAt, orderId: Math.ceil(Math.random(1,10)*1000)})
   }
 
   const renderCartItem = ({ item }) => (

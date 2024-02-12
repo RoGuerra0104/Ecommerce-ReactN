@@ -3,7 +3,7 @@ import categories_data from "../data/categories_data.json"
 import products_data from "../data/products_data.json"
 
 export const shopSlice = createSlice({
-    name:"shop",
+    name: "shop",
     initialState: {
         categorySelected: "",
         productIdSelected: 0,
@@ -15,17 +15,18 @@ export const shopSlice = createSlice({
     reducers: {
         setCategorySelected: (state, action) => {
             state.categorySelected = action.payload
-            state.productsFilteredByCategory = state.products.filter(product=>product.category===state.categorySelected)
+            state.productsFilteredByCategory = state.products.filter(product => product.category === state.categorySelected)
         },
         setProductIdSelected: (state, action) => {
             state.productIdSelected = action.payload
         },
         setProductSelected: (state, action) => {
-            state.productSelected = state.products.find(product=>product.id===action.payload)
+            state.productSelected = state.products.find(product => product.id === action.payload)
         }
-    }
+    },
+    // 
 })
 
-export const {setCategorySelected, setProductIdSelected, setProductSelected} = shopSlice.actions
+export const { setCategorySelected, setProductIdSelected, setProductSelected } = shopSlice.actions
 
 export default shopSlice.reducer

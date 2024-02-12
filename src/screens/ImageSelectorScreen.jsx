@@ -17,7 +17,7 @@ const ImageSelectorScreen = ({ navigation }) => {
         if (!granted) {
             return false
         }
-        console.log("Permisos otorgados")
+        
         return true
     }
 
@@ -77,6 +77,7 @@ const ImageSelectorScreen = ({ navigation }) => {
                         </TouchableOpacity>
                     </View>
             }
+            
         </View>
     )
 }
@@ -114,7 +115,7 @@ const styles = StyleSheet.create({
         gap: 10,
     },
     btnConfirm: {
-        backgroundColor: colors.secondary,
+        backgroundColor: "#1a7431",
         paddingHorizontal: 50
     }
 })

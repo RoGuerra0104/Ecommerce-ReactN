@@ -14,14 +14,16 @@ const Header = ({ title, navigation }) => {
                     : null
             }
             <Text style={styles.headerTitle}>{title}</Text>
+            {
+            navigation.canGoBack() ?
+                <TouchableOpacity onPress={navigation.popToTop} style={styles.homeImport}>
+                    <AntDesign name="home" size={40} color="white" />
+                </TouchableOpacity> 
+                :null
+                }
 
-            <TouchableOpacity onPress={navigation.popToTop} style={styles.homeImport}>
-                <AntDesign name="home" size={40} color="white" />
-            </TouchableOpacity>
-            
-            {/* <TouchableOpacity onPress={()=>navigation.navigate("Perfil")} style={styles.homeImport}>
-            <AntDesign name="user" size={30} color={"white"} />
-            </TouchableOpacity> */}
+
+
         </View>
     )
 }

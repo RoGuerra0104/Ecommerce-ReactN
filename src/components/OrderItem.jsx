@@ -4,7 +4,8 @@ import Card from './Card'
 import { Feather } from '@expo/vector-icons';
 
 const OrderItem = ({ order, setOrderId, setModalVisible }) => {
-    //console.log("Order en OrderItem: ", order.createdAt)
+
+    
 
     let date = new Date(order.createdAt)
     date = date.toLocaleString()
